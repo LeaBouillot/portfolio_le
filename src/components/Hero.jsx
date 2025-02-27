@@ -1,56 +1,52 @@
 import React from "react";
 import profilepic from "../assets/profilepic5.png";
 import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
-import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   return (
-    <div>
-      <div className="my-7 sm:my-0 max-w-[1200px] h-[80vh] mx-auto flex flex-col-reverse sm:flex-row justify-center align-center">
-        <div className=" flex-col my-auto mx-auto">
-          <p className="md:text-5xl sm:text-6xl text-gray-200">Hi ! I am Léa</p>
-          <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">
-            {" "}
-            <TypeAnimation
-              sequence={["Frontend Dev", 1000, "Webdesigner", 1000]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
+    <header className="p-8 bg-white">
+      <div className="container mx-auto grid h-full gap-10 min-h-[60vh] w-full grid-cols-1 items-center lg:grid-cols-2">
+        {/* Texte principal */}
+        <div className="row-start-2 lg:row-auto">
+          <h1 className="mb-4 text-3xl font-bold leading-tight lg:text-5xl text-blue-gray-900">
+            Welcome to my Web
+            <br /> Development Portfolio!
           </h1>
-        </div>
-
-        <div>
-          <p>2 ans experience</p>
-        </div>
-
-        <div className="text-5xl flex justify-start gap-16 my-7 text-purple-500">
-          <AiFillLinkedin />
-          <AiFillGithub />
-          <AiFillInstagram />
-        </div>
-
-        <div className="relative inline-flex group my-3">
-          <div></div>
+          <p className="mb-4 text-indigo-500 md:pr-16 xl:pr-28">
+            Je m'appelle Léa Bouillot, et je suis développeuse web. Découvrez
+            mon parcours en développement web, où créativité et performance se
+            combinent pour créer des solutions sur mesure.
+          </p>
+          {/* envoyer email */}
           <a
-            href="/"
-            title="Download CV"
-            role="button"
-            className="relative inline-flex justify-center items-center"
+            href="mailto:leadreamcoder@gmail.com"
+            className="px-6 py-2 text-white transition duration-300 bg-indigo-500 rounded-lg hover:bg-indigo-600"
           >
-            Voir le CV
+            Contactez moi
           </a>
+          {/* <div className="grid">
+  <p className="mb-2 font-medium text-gray-900">Contactez-moi</p>
+  <div className="flex flex-col w-full gap-4 mb-2 md:flex-row">
+    <input
+      type="email"
+      placeholder="Enter your email"
+      className="flex-grow px-4 py-2 text-gray-700 border border-gray-300 rounded-lg"
+    />
+    <button className="px-4 py-2 text-white bg-indigo-500 rounded-lg md:w-auto">
+      Envoyer
+    </button>
+  </div>
+</div>       */}
         </div>
 
-        <div className="my-auto">
-          <img
-            className="w-[300px] sm:w-[500px] mx-auto h-auto rounded-full"
-            src={profilepic}
-            alt="profile image"
-          />
-        </div>
+        {/* Image */}
+        <img
+          src={profilepic}
+          alt="profile"
+          className="h-[36rem] w-full rounded-xl object-cover"
+        />
       </div>
-    </div>
+    </header>
   );
 };
 
