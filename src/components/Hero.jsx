@@ -86,13 +86,19 @@ const Hero = () => {
             )}
 
             <div className="flex flex-wrap justify-start gap-6 mt-8 ">
-              <a href="https://www.linkedin.com/in/lea-bouillot-developpeur-web/">
+              <a href="https://www.linkedin.com/in/lea-bouillot-developpeur-web/"
+               target="_blank"
+               rel="noopener noreferrer">
                 <AiFillLinkedin className="w-5 h-5 text-gray-600" />
               </a>
-              <a href="https://github.com/LeaBouillot">
+              <a href="https://github.com/LeaBouillot"
+               target="_blank"
+               rel="noopener noreferrer">
                 <AiFillGithub className="w-5 h-5 text-gray-600" />
               </a>
-              <a href="mailto:leadreamcoder@gmail.com">
+              <a href="mailto:leadreamcoder@gmail.com"
+               target="_blank"
+               rel="noopener noreferrer">
                 <HiEnvelope className="w-5 h-5 text-gray-600" />
               </a>
             </div>
