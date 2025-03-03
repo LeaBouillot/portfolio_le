@@ -15,19 +15,25 @@ const Contact = () => {
           formulaire, et partons ensemble vers une aventure d&apos;innovation et
           de réussite.
         </p>
-        <div className="flex flex-wrap justify-center gap-10 mt-8"> 
+        <div className="flex flex-wrap justify-center gap-10 mt-8">
           <a
             href="mailto:leadreamcoder@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <HiEnvelope className="w-6 h-6 text-indigo-600" />
           </a>
           <a
             href="https://www.linkedin.com/in/lea-bouillot-developpeur-web/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <AiFillLinkedin className="w-6 h-6 text-indigo-600" />
           </a>
           <a
             href="https://github.com/LeaBouillot"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <AiFillGithub className="w-6 h-6 text-indigo-600" />
           </a>
@@ -37,7 +43,6 @@ const Contact = () => {
       <div>
         <div className="container max-w-[700px] mx-auto border border-gray-200 rounded-lg shadow-lg bg-white">
           <div className="grid md:gap-10">
-          
             <div className="col-span-4 p-8 md:p-16">
               <form action="#">
                 {/* Nom et prénom */}
