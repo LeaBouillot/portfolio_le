@@ -23,7 +23,7 @@ const Hero = () => {
             </div>
 
             <h1 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
-              Hello, je suis <span className="text-indigo-600">Léa</span>
+              Hello, I&apos;m <span className="text-indigo-600">Léa</span>
             </h1>
 
             <h2 className="max-w-lg text-xl text-gray-600 md:text-2xl">
