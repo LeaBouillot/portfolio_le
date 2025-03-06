@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiSolidGraduation } from "react-icons/bi";
-import { FaChartBar, FaPuzzlePiece, FaMousePointer } from "react-icons/fa";
+import { FaPuzzlePiece } from "react-icons/fa";
 import { RiCodeBoxFill } from "react-icons/ri";
 import {
   FaJs,
@@ -70,7 +70,7 @@ const Skills = () => {
       <div className="container max-w-[1000px] grid items-center w-full grid-cols-1 gap-16 mx-auto lg:grid-cols-2 mt-11 pt-11 pb-11">
         <div className="col-span-1">
           <h2 className="text-3xl font-bold text-blue-gray-900">
-            Get to know me!
+            About me
           </h2>
           <p className="w-9/12 mt-3 mb-4 font-normal leading-relaxed text-gray-500">
             Je maîtrise JavaScript, React, Node.js, PHP, SQL et Symfony, des
