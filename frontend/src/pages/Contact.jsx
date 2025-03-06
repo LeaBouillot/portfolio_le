@@ -21,7 +21,7 @@ const handleSubmit = async (e) => {
 
   try {
     // URL du backend
-    const backendUrl = 'http://localhost:5000/api/contact';
+    const backendUrl = 'http://localhost:5001/';
     
     // Faire une requête à votre API backend
     const response = await fetch(backendUrl, {
