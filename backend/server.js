@@ -10,11 +10,11 @@ app.use(express.json());
 // Configurer nodemailer avec Mailtrap
 // Looking to send emails in production? Check out our Email API/SMTP product!
 var transport = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
+  host: process.env.MAIL_HOST,
+  port: process.env.MAIL_PORT,
   auth: {
-    user: "e3298a7939b3b4",
-    pass: "c6603109047f89"
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
   }
 });
 
@@ -47,7 +47,7 @@ app.post('/api/contact', async (req, res) => {
   
   try {
     // Envoyer l'email (sera capturé par Mailtrap)
-    const info = await transporter.sendMail(mailOptions);
+    const info = await transport.sendMail(mailOptions);
     console.log('Email envoyé à Mailtrap:', info.messageId);
     res.status(200).json({ 
       success: true, 
