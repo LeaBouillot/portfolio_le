@@ -1,8 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { HiEnvelope } from "react-icons/hi2";
 
 const Contact = () => {
+  // États pour chaque champ du formulaire
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [interest, setInterest] = useState("Développement");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Fonction pour gérer la soumission du formulaire
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Option 1: Utiliser un service d'emails comme EmailJS
+      // Vous devrez créer un compte sur emailjs.com et configurer un modèle
+      
+      // Exemple avec EmailJS (nécessite d'installer emailjs-com)
+      // import emailjs from 'emailjs-com';
+      // await emailjs.send(
+      //   'YOUR_SERVICE_ID',
+      //   'YOUR_TEMPLATE_ID',
+      //   { firstName, lastName, email, interest, message, to_email: 'lea@gmail.com' },
+      //   'YOUR_USER_ID'
+      // );
+
+      // Option 2: Faire une requête à votre propre API backend
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          interest,
+          message,
+          toEmail: 'lea@gmail.com' // L'adresse email où vous souhaitez recevoir les messages
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Réinitialiser le formulaire
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setInterest("Développement");
+        setMessage("");
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du formulaire:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="px-8 py-16 mt-20 bg-gradient-to-br from-white to-indigo-100">
       <div className="container mx-auto mb-10 text-center">
@@ -17,7 +80,7 @@ const Contact = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-10 mt-8">
           <a
-            href="mailto:leadreamcoder@gmail.com"
+            href="mailto:lea@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +107,17 @@ const Contact = () => {
         <div className="container max-w-[700px] mx-auto border border-gray-200 rounded-lg shadow-lg bg-white">
           <div className="grid md:gap-10">
             <div className="col-span-4 p-8 md:p-16">
-              <form action="#">
+              {submitStatus === 'success' && (
+                <div className="p-4 mb-6 text-green-700 bg-green-100 rounded-lg">
+                  Votre message a été envoyé avec succès !
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="p-4 mb-6 text-red-700 bg-red-100 rounded-lg">
+                  Une erreur s'est produite. Veuillez réessayer plus tard.
+                </div>
+              )}
+              <form onSubmit={handleSubmit}>
                 {/* Nom et prénom */}
                 <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2">
                   <div>
@@ -55,6 +128,9 @@ const Contact = () => {
                       type="text"
                       placeholder="ex. Lucas"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
                     />
                   </div>
                   <div>
@@ -65,6 +141,9 @@ const Contact = () => {
                       type="text"
                       placeholder="ex. Jones"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -78,6 +157,9 @@ const Contact = () => {
                     type="email"
                     placeholder="ex. lucas@mail.com"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
 
@@ -92,7 +174,8 @@ const Contact = () => {
                         type="radio"
                         name="interest"
                         className="text-gray-500 form-radio"
-                        defaultChecked
+                        checked={interest === "Développement"}
+                        onChange={() => setInterest("Développement")}
                       />
                       <span className="ml-2 text-gray-700">Développement</span>
                     </label>
@@ -101,6 +184,8 @@ const Contact = () => {
                         type="radio"
                         name="interest"
                         className="text-gray-500 form-radio"
+                        checked={interest === "Design"}
+                        onChange={() => setInterest("Design")}
                       />
                       <span className="ml-2 text-gray-700">Design</span>
                     </label>
@@ -109,6 +194,8 @@ const Contact = () => {
                         type="radio"
                         name="interest"
                         className="text-gray-500 form-radio"
+                        checked={interest === "Support"}
+                        onChange={() => setInterest("Support")}
                       />
                       <span className="ml-2 text-gray-700">Support</span>
                     </label>
@@ -117,6 +204,8 @@ const Contact = () => {
                         type="radio"
                         name="interest"
                         className="text-gray-500 form-radio"
+                        checked={interest === "Autre"}
+                        onChange={() => setInterest("Autre")}
                       />
                       <span className="ml-2 text-gray-700">Autre</span>
                     </label>
@@ -132,13 +221,20 @@ const Contact = () => {
                     placeholder="Entrez votre message ici..."
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows="5"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
                   ></textarea>
                 </div>
 
                 {/* Bouton d'envoi */}
                 <div className="flex justify-center">
-                  <button className="px-6 py-2 text-white bg-indigo-600 rounded-lg">
-                    Envoyer le message
+                  <button 
+                    type="submit" 
+                    className="px-6 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors disabled:bg-indigo-400"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                   </button>
                 </div>
               </form>
