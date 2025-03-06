@@ -13,58 +13,50 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   // Fonction pour gérer la soumission du formulaire
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+// Fonction pour gérer la soumission du formulaire
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus(null);
 
-    try {
-      // Option 1: Utiliser un service d'emails comme EmailJS
-      // Vous devrez créer un compte sur emailjs.com et configurer un modèle
-      
-      // Exemple avec EmailJS (nécessite d'installer emailjs-com)
-      // import emailjs from 'emailjs-com';
-      // await emailjs.send(
-      //   'YOUR_SERVICE_ID',
-      //   'YOUR_TEMPLATE_ID',
-      //   { firstName, lastName, email, interest, message, to_email: 'lea@gmail.com' },
-      //   'YOUR_USER_ID'
-      // );
+  try {
+    // URL du backend
+    const backendUrl = 'http://localhost:5000/api/contact';
+    
+    // Faire une requête à votre API backend
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        interest,
+        message,
+        toEmail: 'leadreamcoder@gmail.com' 
+      }),
+    });
 
-      // Option 2: Faire une requête à votre propre API backend
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          interest,
-          message,
-          toEmail: 'lea@gmail.com' // L'adresse email où vous souhaitez recevoir les messages
-        }),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        // Réinitialiser le formulaire
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setInterest("Développement");
-        setMessage("");
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi du formulaire:', error);
+    if (response.ok) {
+      setSubmitStatus('success');
+      // Réinitialiser le formulaire
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setInterest("Développement");
+      setMessage("");
+    } else {
       setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi du formulaire:', error);
+    setSubmitStatus('error');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section className="px-8 py-16 mt-20 bg-gradient-to-br from-white to-indigo-100">
