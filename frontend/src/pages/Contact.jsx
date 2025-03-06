@@ -13,50 +13,52 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   // Fonction pour gérer la soumission du formulaire
-// Fonction pour gérer la soumission du formulaire
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setSubmitStatus(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
-  try {
-    // URL du backend
-    const backendUrl = 'http://localhost:5001/';
-    
-    // Faire une requête à votre API backend
-    const response = await fetch(backendUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        interest,
-        message,
-        toEmail: 'leadreamcoder@gmail.com' 
-      }),
-    });
+    try {
+      // URL du backend mise à jour pour le port 5002
+      const backendUrl = 'http://localhost:5002/api/contact';
+      
+      // Faire une requête à votre API backend
+      const response = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          interest,
+          message,
+          toEmail: 'leadreamcoder@gmail.com' 
+        }),
+      });
 
-    if (response.ok) {
-      setSubmitStatus('success');
-      // Réinitialiser le formulaire
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setInterest("Développement");
-      setMessage("");
-    } else {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus('success');
+        // Réinitialiser le formulaire
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setInterest("Développement");
+        setMessage("");
+      } else {
+        console.error('Erreur de serveur:', data.message);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du formulaire:', error);
       setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error('Erreur lors de l\'envoi du formulaire:', error);
-    setSubmitStatus('error');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   return (
     <section className="px-8 py-16 mt-20 bg-gradient-to-br from-white to-indigo-100">
