@@ -146,12 +146,12 @@ export const listProjets = [
   {
     id: 8,
     img: "../assets/proj8.png",
-    title: "Hackathon",
+    title: "CamSense",
     summary:
-    "Hackathon est une application web développée lors d'un hackathon, permettant la reconnaissance d'objets en temps réel grâce à l'IA. L'application utilise des techniques de vision par ordinateur pour identifier et afficher des objets à partir de la caméra de l'utilisateur, le tout avec une interface simple et réactive.",
+    "CamSense est une application web développée lors d'un CamSense, permettant la reconnaissance d'objets en temps réel grâce à l'IA. L'application utilise des techniques de vision par ordinateur pour identifier et afficher des objets à partir de la caméra de l'utilisateur, le tout avec une interface simple et réactive.",
   desc: "Une application de reconnaissance d'objets en temps réel utilisant la vision par ordinateur, développée en JavaScript et CSS.",
   content: [
-    "Hackathon est une application de reconnaissance d'objets en temps réel, utilisant l'intelligence artificielle pour analyser les images capturées par la caméra. L'application identifie les objets et les affiche à l'utilisateur, tout en fournissant des informations détaillées sur chaque élément détecté.",
+    "CamSense est une application de reconnaissance d'objets en temps réel, utilisant l'intelligence artificielle pour analyser les images capturées par la caméra. L'application identifie les objets et les affiche à l'utilisateur, tout en fournissant des informations détaillées sur chaque élément détecté.",
     "L'application est développée en JavaScript et CSS pour l'interface utilisateur, offrant une expérience fluide et réactive. Le projet utilise des bibliothèques comme TensorFlow.js pour la reconnaissance d'objets et des algorithmes de vision par ordinateur pour analyser les images en temps réel.",
     "L'interface est simple, avec une fenêtre de caméra en direct et une zone où les objets détectés sont listés avec des informations supplémentaires. Le projet a été conçu pour être intuitif, rapide et interactif, offrant une démonstration directe de la reconnaissance d'objets.",
     "Découvrez cette application innovante en consultant le lien ci-dessous.",
