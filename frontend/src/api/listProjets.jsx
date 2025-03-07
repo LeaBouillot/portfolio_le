@@ -65,7 +65,7 @@ export const listProjets = [
     "GitHub",
     "Figma",
   ],
-    projectLink: "https://github.com/LeaBouillot/portfolio-lea.git",
+    projectLink: "https://github.com/LeaBouillot/portfolio_lea.git",
   },
   {
     id: 4,
@@ -105,7 +105,7 @@ export const listProjets = [
     "L'architecture de CodExpress repose sur un back-end en Node.js avec une base de données MongoDB pour stocker les extraits de code et les profils des utilisateurs. Le front-end est développé avec React, offrant une interface fluide et responsive, adaptée à tous les appareils.",
     "Découvrez la plateforme CodExpress et partagez vos propres extraits de code en visitant le lien ci-dessous.",
   ],
-    technologies: ["Symfony7","Twig", "Tailwind", "JavaScript", "GIT", "Github"],
+    technologies: ["Symfony7","Twig", "Tailwind", "JavaScript", "MySql", "GIT", "Github"],
     projectLink: "https://github.com/LeaBouillot/codexpress.git",
     site: "https://codexpress.leabouillot.top",
   },
