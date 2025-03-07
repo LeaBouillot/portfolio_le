@@ -65,7 +65,7 @@ export const listProjets = [
     "GitHub",
     "Figma",
   ],
-    projectLink: "https://github.com/LeaBouillot/portfolio_lea.git",
+    site: "https://portfoliodev-delta.vercel.app",
   },
   {
     id: 4,
