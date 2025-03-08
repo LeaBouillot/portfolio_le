@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
+import { useState, useEffect } from "react";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineMail,
+  AiOutlineGithub,
+  AiOutlineLinkedin,
+} from "react-icons/ai";
 import { Link } from "react-router-dom"; // Importation de Link pour la navigation
 
 const Navbar = () => {
@@ -128,7 +134,32 @@ const Navbar = () => {
               {/* Réseaux sociaux dans le menu mobile */}
               <div className="absolute left-0 right-0 px-8 bottom-16">
                 <div className="flex justify-center space-x-4">
-                  {["github", "linkedin", "twitter"].map((social) => (
+                  <a
+                    href="https://www.linkedin.com/in/lea-bouillot-developpeur-web/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 transition-colors bg-gray-800 rounded-full hover:bg-indigo-700"
+                  >
+                    <AiOutlineLinkedin />
+                  </a>
+                  <a
+                    href="https://github.com/LeaBouillot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 transition-colors bg-gray-800 rounded-full hover:bg-indigo-700"
+                  >
+                    <AiOutlineGithub />
+                  </a>
+                  <a
+                    href="mailto:leadreamcoder@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 transition-colors bg-gray-800 rounded-full hover:bg-indigo-700"
+                  >
+                    <AiOutlineMail />
+                  </a>
+
+                  {/* {["github", "linkedin", "twitter"].map((social) => (
                     <a
                       key={social}
                       href={`https://${social}.com`}
@@ -138,7 +169,7 @@ const Navbar = () => {
                     >
                       <div className="w-5 h-5 bg-gray-300 rounded-sm" />
                     </a>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>
