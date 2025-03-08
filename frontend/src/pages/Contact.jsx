@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { HiEnvelope } from "react-icons/hi2";
 
@@ -20,13 +20,13 @@ const Contact = () => {
 
     try {
       // URL du backend mise à jour pour le port 5002
-      const backendUrl = 'http://localhost:5002/api/contact';
-      
+      const backendUrl = "http://localhost:5002/api/contact";
+
       // Faire une requête à votre API backend
       const response = await fetch(backendUrl, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           firstName,
@@ -34,14 +34,14 @@ const Contact = () => {
           email,
           interest,
           message,
-          toEmail: 'leadreamcoder@gmail.com' 
+          toEmail: "leadreamcoder@gmail.com",
         }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         // Réinitialiser le formulaire
         setFirstName("");
         setLastName("");
@@ -49,12 +49,12 @@ const Contact = () => {
         setInterest("Développement");
         setMessage("");
       } else {
-        console.error('Erreur de serveur:', data.message);
-        setSubmitStatus('error');
+        console.error("Erreur de serveur:", data.message);
+        setSubmitStatus("error");
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi du formulaire:', error);
-      setSubmitStatus('error');
+      console.error("Erreur lors de l'envoi du formulaire:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -101,14 +101,14 @@ const Contact = () => {
         <div className="container max-w-[700px] mx-auto border border-gray-200 rounded-lg shadow-lg bg-white">
           <div className="grid md:gap-10">
             <div className="col-span-4 p-8 md:p-16">
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <div className="p-4 mb-6 text-green-700 bg-green-100 rounded-lg">
                   Votre message a été envoyé avec succès !
                 </div>
               )}
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <div className="p-4 mb-6 text-red-700 bg-red-100 rounded-lg">
-                  Une erreur s'est produite. Veuillez réessayer plus tard.
+                  Une erreur s&apos;est produite. Veuillez réessayer plus tard.
                 </div>
               )}
               <form onSubmit={handleSubmit}>
@@ -223,8 +223,8 @@ const Contact = () => {
 
                 {/* Bouton d'envoi */}
                 <div className="flex justify-center">
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="px-6 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors disabled:bg-indigo-400"
                     disabled={isSubmitting}
                   >
